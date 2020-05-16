@@ -19,18 +19,6 @@ class App extends Component {
     alert: null,
   };
 
-  searchUsers = async (text) => {
-    this.setState({ loading: true });
-
-    const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&
-      client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&
-      client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    this.setState({ users: res.data.items, loading: false });
-  };
-
   getUser = async (username) => {
     this.setState({ loading: true });
 
@@ -79,7 +67,6 @@ class App extends Component {
                   render={(props) => (
                     <Fragment>
                       <Search
-                        searchUsers={this.searchUsers}
                         clearUsers={this.clearUsers}
                         showClear={users.length > 0 ? true : false}
                         setAlert={this.setAlert}
