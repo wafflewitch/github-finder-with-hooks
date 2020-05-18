@@ -43,8 +43,6 @@ class App extends Component {
     this.setState({ repos: res.data, loading: false });
   };
 
-  clearUsers = () => this.setState({ users: [], loading: false });
-
   setAlert = (message, type) => {
     this.setState({ alert: { message: message, type: type } });
 
@@ -66,11 +64,7 @@ class App extends Component {
                   path='/'
                   render={(props) => (
                     <Fragment>
-                      <Search
-                        clearUsers={this.clearUsers}
-                        showClear={users.length > 0 ? true : false}
-                        setAlert={this.setAlert}
-                      />
+                      <Search setAlert={this.setAlert} />
                       <Users />
                     </Fragment>
                   )}
